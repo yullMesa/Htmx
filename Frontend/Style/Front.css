@@ -1,0 +1,8 @@
+body {
+    /* Un degradado que va de un café oscuro a un cobre más claro */
+    background: radial-gradient(circle, #8b4513 0%, #3e2723 100%);
+    min-height: 100vh;
+    margin: 0;
+    color: #e0c5a8; /* Un color crema para que el texto sea legible */
+    font-family: 'Georgia', serif; /* Tipografía con estilo antiguo */
+}
