@@ -1,69 +1,140 @@
 body {
     background: radial-gradient(circle, #8b4513 0%, #3e2723 100%);
     margin: 0;
-    padding: 0;
-    height: 100vh; /* Ocupa el 100% de la ventana */
-    overflow: hidden; /* Evita que salga barra de desplazamiento */
-    display: flex;
-    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    position: relative; /* Esto es el ancla para las imágenes */
+    overflow: hidden;    /* Evita barras de desplazamiento si mueves algo al borde */
 }
 
-/* LOS TUBOS: Cruzan toda la pantalla por detrás */
-.pipes-structure {
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* El contenedor que define la posición en la pantalla */
+.portada {
     position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 180px;
-    transform: translateY(-50%);
-    background-image: url('Ink/pipe.svg');
-    background-size: 100% auto;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 1;
+    top: 10%;
+    left: 50%;
+    /* El transform asegura que el centro de la imagen coincida con el centro de la pantalla */
+    transform: translate(-50%, -50%);
+    
+    /* Opcional: Sombra para dar profundidad sobre el fondo café */
+    filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.5));
 }
 
-/* CONTENEDOR PRINCIPAL: Reparte los espacios */
-.main-container {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    /* Esto hace que la distancia arriba, en medio y abajo sea IGUAL */
-    justify-content: space-evenly; 
-    align-items: center;
+/* El estilo de la imagen como tal */
+.logo-principal {
+    display: block;
+    width: 550px  !important;      /* He bajado esto de 450px a 280px para que sea más pequeño */
+    height: auto;
+    max-width: 90vw;
 }
 
-/* Tamaño del cartel Gaming Tool */
-.main-banner {
-    max-height: 120px;
-    width: auto;
-    filter: drop-shadow(0px 8px 15px rgba(0,0,0,0.8));
+
+/* La nueva (más abajo) */
+.contenido-inferior {
+    position: absolute;
+    top: 17%;           /* Un número mayor para que baje */
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-/* Tamaño del botón Start - Quedará en el centro exacto */
-.start-button {
-    /* Quitamos max-height y definimos un height GRANDE */
-    height: 300px; /* ¡Bastante grande! Ajusta este número a tu gusto */
-    width: auto; /* Mantiene la proporción */
+.characters {
+    display: block;
+    width: 560px;       /* Ajusta el tamaño que quieras */
+    height: auto;
+    filter: drop-shadow(0px 5px 15px rgba(0,0,0,0.8));
+}
+
+.contenido-inferior img {
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.7));
+}
+
+
+.Login-box {
+  position: absolute;
+  top: 87%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: rgba(43, 29, 26, 0.85); /* Fondo semitransparente para que destaque sobre el fondo café */
+  padding: 30px;
+  border: 2px solid #8b4513;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  width: 320px; /* Ancho fijo para que el diseño sea consistente */
+
+}
+
+.input-group{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input-group label {
+  color: #d4af37;
+  font-family: 'Special Elite', system-ui;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.input-group input {
+    background: #1a0f0d;
+    border: 1px solid #d4af37;
+    color: #f0e68c;
+    padding: 12px;    /* Más espacio para que el texto respire */
+    font-size: 16px;  /* Texto un poco más grande */
+    border-radius: 6px;
+    width: 100%;      /* Ocupa todo el ancho disponible del login-box */
+    box-sizing: border-box; /* Crucial para que el padding no "infle" el cuadro */
+}
+
+/* Añade esto a tu CSS para los inputs */
+.input-group input:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); /* Resplandor dorado */
+    background: #3e2723;
+    outline: none;
+}
+
+.btn-steam {
+    flex: 1;
+    /* Gradiente metálico para ambos */
+    background: linear-gradient(to bottom, #d4af37 0%, #8b4513 100%);
+    color: #1a0f0d;
+    border: 2px solid #5d4037;
+    padding: 12px 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
     cursor: pointer;
-    
-    /* Efecto de sombra para que resalte más, estilo cobre */
-    filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.8));
-    
-    /* Tu animación suave */
-    transition: transform 0.3s ease-out, filter 0.3s ease-out;
+    /* Sombra para efecto 3D */
+    box-shadow: 0px 4px 0px #3e2723;
+    transition: all 0.1s;
+    font-size: 13px;
+    border-radius: 4px;
 }
 
-/* EFECTO HOVER: Un pequeño plus para cuando pasas el mouse */
-.start-button:hover {
-    transform: scale(1.05); /* Agranda un 5% más */
-    filter: drop-shadow(0px 15px 20px rgba(0,0,0,0.9)) brightness(1.1); /* Brilla un poco */
+/* Efecto al pasar el mouse - Brillo para ambos */
+.btn-steam:hover {
+    filter: brightness(1.2);
+    transform: translateY(-1px);
 }
 
-/* Ajuste opcional para balancear el peso visual inferior */
-.spacer {
-    height: 120px; 
+.botones-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
 }
+
+.btn-steam:active {
+    transform: translateY(3px);
+    box-shadow: 0px 1px 0px #3e2723;
+}
+
