@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="Style/Front.css">
     <title>Gaming Tool</title>
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 </head>
 
 <body>
@@ -24,20 +25,33 @@
     <div class="Login-box">
         <div class="input-group">
             <label>Usuarios</label>
-            <input type="text" placeholder="Ingrese su Nombre de Usuario">
+            <input type="text" placeholder="Ingrese su Nombre de Usuario" name="usuario">
         </div>
 
         <div class="input-group">
 
             <label>Contraseña</label>
-            <input type="password" placeholder="Ingrese su Contraseña">
+            <input type="password" placeholder="Ingrese su Contraseña" name="clave">
 
         </div>
 
-        <div class="botones-group">
-            <button class="btn-steam">Iniciar Sesión</button>
-            <button class="btn-steam ">Registrarse</button>
+        <div class="botones-group" id="auth-container">
+            <button type="button" class="btn-steam" 
+                    hx-post="/login" 
+                    hx-target="#mensaje-respuesta" 
+                    hx-include="[name='usuario'], [name='clave']">
+                Iniciar Sesión
+            </button>
+
+            <button type="button" class="btn-steam" 
+                    hx-post="/register" 
+                    hx-target="#mensaje-respuesta" 
+                    hx-include="[name='usuario'], [name='clave']">
+                Registrarse
+            </button>
         </div>
+
+        <div id="mensaje-respuesta" style="margin-top: 10px; text-align: center; font-family: 'Special Elite';"></div>
     </div>
 
     
