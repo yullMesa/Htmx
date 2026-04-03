@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+body {
+    background-color: #0d0d0d; /* Negro carbón */
+    background-image: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
+    color: #d4af37; /* Dorado latón */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Special+Elite', 'Courier New', serif; /* Fuente de máquina de escribir */
+    overflow: hidden;
+}
+
+#game-container {
+    text-align: center;
+    padding: 20px;
+    border: 4px double #8b5a2b; /* Borde de cobre oxidado */
+    background: rgba(20, 15, 10, 0.8);
+    box-shadow: inset 0 0 50px #000, 0 0 20px #5d4037;
+    border-radius: 5px;
+}
+
+/* --- IMAGEN CON EFECTO DE LENTE ANTIGUA --- */
+/* --- IMAGEN CON EFECTO DE LENTE ANTIGUA --- */
+.comic-img {
+    /* --- CAMBIOS AQUÍ --- */
+    width: 100%;             /* 1. Fuerza a la imagen a ocupar todo el ancho del contenedor */
+    max-height: 70vh;       /* 2. Mantén un límite de altura para que no empuje el texto fuera de la pantalla */
+    object-fit: contain;    /* 3. Escala la imagen para que rellene el espacio sin cortarse ni estirarse feo */
+    
+    /* --- MANTÉN EL RESTO DE TU CÓDIGO IGUAL --- */
+    border: 5px solid #3e2723;
+    outline: 2px solid #8b5a2b;
+    filter: sepia(0.3) contrast(1.9); /* Efecto foto antigua */
+    box-shadow: 0 0 30px rgba(139, 90, 43, 0.5);
+    display: block;         /* Ayuda a centrarla si queda espacio */
+    margin: 0 auto;         /* Centra la imagen horizontalmente */
+    
+    /* Animación de apertura de diafragma (Mantenla tal cual) */
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="100" fill="white"/></svg>');
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="100" fill="white"/></svg>');
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    animation: abrirDiafragma 2s steps(10) forwards; /* Movimiento mecánico por pasos */
+}
+
+/* --- TEXTO TIPO TELEGRAMA --- */
+.comic-text {
+    margin-top: 25px;
+    font-size: 1.6rem;
+    color: #c4a484; 
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-bottom: 1px solid #5d4037;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* --- BOTÓN MECÁNICO (PLACA DE METAL) --- */
+.btn-next {
+    margin-top: 30px;
+    padding: 15px 45px;
+    background: linear-gradient(145deg, #8b5a2b, #3e2723);
+    color: #ffe0b2;
+    border: 2px solid #d4af37;
+    font-family: 'Special Elite', serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px #21100b, 0 0 10px rgba(212, 175, 55, 0.3);
+    transition: all 0.2s;
+    position: relative;
+}
+
+.btn-next:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #21100b;
+}
+
+.btn-next:hover {
+    background: linear-gradient(145deg, #a67c52, #5d4037);
+    color: white;
+    border-color: #fff;
+    text-shadow: 0 0 5px #fff;
+}
+
+/* Animación mecánica */
+@keyframes abrirDiafragma {
+    0% { mask-size: 0%; -webkit-mask-size: 0%; filter: brightness(0); }
+    100% { mask-size: 200%; -webkit-mask-size: 200%; filter: brightness(1) sepia(0.3); }
+}

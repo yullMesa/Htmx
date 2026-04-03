@@ -3,57 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Style/Front.css">
+    <link rel="stylesheet" href="/static/Style/Front.css">
     <title>Gaming Tool</title>
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
 </head>
 
 <body>
     <div class="portada">
 
-        <img src="Style/Ink/GaimgTool.png" alt="Gaming Tool Logo" class="logo-principal">
+        <img src="/static/Style/Ink/GaimgTool.png" alt="Gaming Tool Logo" class="logo-principal">
 
     </div>
 
     <div class="contenido-inferior">
 
-        <img src="Style/Ink/Characters.png" alt="Mouse Icon" class="characters">
+        <img src="/static/Style/Ink/Characters.png" alt="Mouse Icon" class="characters">
 
     </div>
 
     <div class="Login-box">
-        <div class="input-group">
-            <label>Usuarios</label>
-            <input type="text" placeholder="Ingrese su Nombre de Usuario" name="usuario">
-        </div>
+        
 
-        <div class="input-group">
+       <div class="Login-box">
+        <form id="auth-form">
+            <div class="input-group">
+                <label>Usuarios</label>
+                <input type="text" name="usuario" placeholder="Ingrese su Nombre de Usuario">
+            </div>
 
-            <label>Contraseña</label>
-            <input type="password" placeholder="Ingrese su Contraseña" name="clave">
+            <div class="input-group">
+                <label>Contraseña</label>
+                <input type="password" name="clave" placeholder="Ingrese su Contraseña">
+            </div>
 
-        </div>
+           <div class="botones-group">
+                <button type="button" class="btn-steam" 
+                        hx-post="/login" 
+                        hx-trigger="click"
+                        hx-target="#mensaje-respuesta"
+                        hx-include="#auth-form"
+                        type="button">
+                    Iniciar Sesión
+                </button>
 
-        <div class="botones-group" id="auth-container">
-            <button type="button" class="btn-steam" 
-                    hx-post="/login" 
-                    hx-target="#mensaje-respuesta" 
-                    hx-include="[name='usuario'], [name='clave']">
-                Iniciar Sesión
-            </button>
-
-            <button type="button" class="btn-steam" 
-                    hx-post="/register" 
-                    hx-target="#mensaje-respuesta" 
-                    hx-include="[name='usuario'], [name='clave']">
-                Registrarse
-            </button>
-        </div>
+                <button type="button" class="btn-steam" 
+                        hx-post="/register" 
+                        hx-trigger="click"
+                        hx-target="#mensaje-respuesta"
+                        hx-include="#auth-form"
+                        type="button">
+                    Registrarse
+                </button>
+            </div>
+        </form>
 
         <div id="mensaje-respuesta" style="margin-top: 10px; text-align: center; font-family: 'Special Elite';"></div>
     </div>
-
+    
     
 
 </body>

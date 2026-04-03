@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gaming Tool - El Prólogo</title>
+    <link rel="stylesheet" href="/static/Style/Game_design/Prologo.css">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
+<body>
+
+    <div id="game-container">
+        <div id="game-content" hx-get="/escena/0" hx-trigger="load" hx-swap="outerHTML">
+            Cargando...
+        </div>
+    </div>
+
+</body>
+</html>
